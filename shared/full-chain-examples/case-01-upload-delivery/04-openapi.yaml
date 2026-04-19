@@ -1,0 +1,601 @@
+openapi: 3.0.3
+info:
+  title: 上传下达模块接口契约样例
+  version: 1.1.0
+  description: |
+    面向巡办、巡组与横向协同部门的上传下达模块接口契约。
+    本样例服务于高保真标杆案例，重点覆盖调度、上报、协助、看板与审计摘要。
+servers:
+  - url: /api
+security:
+  - bearerAuth: []
+tags:
+  - name: dispatchOrders
+    description: 调度指令管理
+  - name: dispatchMaterials
+    description: 专项材料传递
+  - name: meetings
+    description: 会议通知与确认
+  - name: groupReports
+    description: 周报与问题报表
+  - name: assistRequests
+    description: 协助申请
+  - name: dashboards
+    description: 看板统计
+  - name: auditLogs
+    description: 审计留痕摘要
+paths:
+  /dispatch-orders:
+    get:
+      tags: [dispatchOrders]
+      summary: 查询调度指令列表
+      parameters:
+        - $ref: '#/components/parameters/pageNo'
+        - $ref: '#/components/parameters/pageSize'
+        - in: query
+          name: status
+          schema:
+            type: string
+            enum: [PUBLISHED, RECEIVED, IN_PROGRESS, FEEDBACK_SUBMITTED, OVERDUE, CLOSED]
+        - in: query
+          name: keyword
+          schema:
+            type: string
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DispatchOrderPageResult'
+    post:
+      tags: [dispatchOrders]
+      summary: 创建调度指令
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDispatchOrderRequest'
+      responses:
+        '201':
+          description: 创建成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DispatchOrder'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+  /dispatch-orders/{orderId}:
+    get:
+      tags: [dispatchOrders]
+      summary: 查询调度指令详情
+      parameters:
+        - $ref: '#/components/parameters/orderId'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DispatchOrderDetail'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /dispatch-orders/{orderId}/receive:
+    post:
+      tags: [dispatchOrders]
+      summary: 签收调度指令
+      parameters:
+        - $ref: '#/components/parameters/orderId'
+      responses:
+        '200':
+          description: 签收成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DispatchOrder'
+        '409':
+          $ref: '#/components/responses/BusinessConflict'
+  /dispatch-orders/{orderId}/feedback:
+    post:
+      tags: [dispatchOrders]
+      summary: 提交调度反馈
+      parameters:
+        - $ref: '#/components/parameters/orderId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DispatchFeedbackRequest'
+      responses:
+        '200':
+          description: 提交成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DispatchOrderDetail'
+  /dispatch-materials:
+    get:
+      tags: [dispatchMaterials]
+      summary: 查询专项材料列表
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DispatchMaterial'
+  /dispatch-materials/{materialId}/receipt:
+    post:
+      tags: [dispatchMaterials]
+      summary: 回执专项材料查看结果
+      parameters:
+        - $ref: '#/components/parameters/materialId'
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DispatchMaterial'
+  /meetings:
+    get:
+      tags: [meetings]
+      summary: 查询会议通知列表
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/MeetingNotice'
+  /meetings/{meetingId}/confirm:
+    post:
+      tags: [meetings]
+      summary: 提交会议确认状态
+      parameters:
+        - $ref: '#/components/parameters/meetingId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [confirmationStatus]
+              properties:
+                confirmationStatus:
+                  type: string
+                  enum: [ATTEND, LEAVE, TENTATIVE]
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MeetingNotice'
+  /group-reports:
+    get:
+      tags: [groupReports]
+      summary: 查询组上报列表
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupReportPageResult'
+    post:
+      tags: [groupReports]
+      summary: 提交周报或问题报表
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGroupReportRequest'
+      responses:
+        '201':
+          description: 提交成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupReport'
+  /group-reports/{reportId}/resubmit:
+    post:
+      tags: [groupReports]
+      summary: 重提周报或问题报表
+      parameters:
+        - $ref: '#/components/parameters/reportId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ResubmitGroupReportRequest'
+      responses:
+        '200':
+          description: 重提成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupReport'
+  /assist-requests:
+    get:
+      tags: [assistRequests]
+      summary: 查询协助申请列表
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistRequestPageResult'
+    post:
+      tags: [assistRequests]
+      summary: 创建协助申请
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAssistRequestRequest'
+      responses:
+        '201':
+          description: 创建成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistRequest'
+  /assist-requests/{requestId}/forward:
+    post:
+      tags: [assistRequests]
+      summary: 转办协助申请
+      parameters:
+        - $ref: '#/components/parameters/requestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [deptId]
+              properties:
+                deptId:
+                  type: string
+                remarks:
+                  type: string
+      responses:
+        '200':
+          description: 转办成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistRequest'
+  /assist-requests/{requestId}/feedback:
+    post:
+      tags: [assistRequests]
+      summary: 提交协助反馈
+      parameters:
+        - $ref: '#/components/parameters/requestId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [resultSummary]
+              properties:
+                resultSummary:
+                  type: string
+                attachments:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Attachment'
+      responses:
+        '200':
+          description: 提交成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AssistRequest'
+  /dashboards/overview:
+    get:
+      tags: [dashboards]
+      summary: 获取上传下达总览看板
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OverviewDashboard'
+  /audit-logs:
+    get:
+      tags: [auditLogs]
+      summary: 查询审计日志摘要
+      responses:
+        '200':
+          description: 成功
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  items:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/AuditLog'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  parameters:
+    orderId:
+      in: path
+      name: orderId
+      required: true
+      schema: {type: string}
+    reportId:
+      in: path
+      name: reportId
+      required: true
+      schema: {type: string}
+    requestId:
+      in: path
+      name: requestId
+      required: true
+      schema: {type: string}
+    materialId:
+      in: path
+      name: materialId
+      required: true
+      schema: {type: string}
+    meetingId:
+      in: path
+      name: meetingId
+      required: true
+      schema: {type: string}
+    pageNo:
+      in: query
+      name: pageNo
+      schema: {type: integer, default: 1}
+    pageSize:
+      in: query
+      name: pageSize
+      schema: {type: integer, default: 10}
+  responses:
+    BadRequest:
+      description: 参数错误
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: 资源不存在
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BusinessConflict:
+      description: 业务状态冲突
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    Attachment:
+      type: object
+      properties:
+        id: {type: string}
+        fileName: {type: string}
+        fileSize: {type: integer}
+    AuditLog:
+      type: object
+      properties:
+        id: {type: string}
+        entityType: {type: string}
+        entityId: {type: string}
+        actionType: {type: string}
+        actorRole: {type: string}
+        occurredAt: {type: string, format: date-time}
+        result: {type: string}
+        remarks: {type: string}
+    DispatchOrder:
+      type: object
+      required: [id, title, secrecyLevel, dueAt, status]
+      properties:
+        id: {type: string}
+        orderNo: {type: string}
+        title: {type: string}
+        content: {type: string}
+        secrecyLevel:
+          type: string
+          enum: [INTERNAL, SECRET, CONFIDENTIAL]
+        dueAt: {type: string, format: date-time}
+        status:
+          type: string
+          enum: [PUBLISHED, RECEIVED, IN_PROGRESS, FEEDBACK_SUBMITTED, OVERDUE, CLOSED]
+        recipientGroupIds:
+          type: array
+          items: {type: string}
+    DispatchOrderDetail:
+      allOf:
+        - $ref: '#/components/schemas/DispatchOrder'
+        - type: object
+          properties:
+            materials:
+              type: array
+              items:
+                $ref: '#/components/schemas/DispatchMaterial'
+            feedbackTimeline:
+              type: array
+              items:
+                $ref: '#/components/schemas/FeedbackTimelineItem'
+            auditSummary:
+              type: array
+              items:
+                $ref: '#/components/schemas/AuditLog'
+    DispatchMaterial:
+      type: object
+      properties:
+        id: {type: string}
+        fileName: {type: string}
+        secrecyLevel:
+          type: string
+          enum: [INTERNAL, SECRET, CONFIDENTIAL]
+        receiptStatus: {type: string}
+        lastViewedAt: {type: string, format: date-time}
+    FeedbackTimelineItem:
+      type: object
+      properties:
+        id: {type: string}
+        feedbackType: {type: string, enum: [STAGE, FINAL]}
+        content: {type: string}
+        feedbackAt: {type: string, format: date-time}
+        actorName: {type: string}
+    DispatchOrderPageResult:
+      type: object
+      properties:
+        total: {type: integer}
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/DispatchOrder'
+    CreateDispatchOrderRequest:
+      type: object
+      required: [title, content, dueAt, recipientGroupIds]
+      properties:
+        title: {type: string}
+        content: {type: string}
+        secrecyLevel:
+          type: string
+          enum: [INTERNAL, SECRET, CONFIDENTIAL]
+        dueAt: {type: string, format: date-time}
+        feedbackRequired: {type: boolean}
+        recipientGroupIds:
+          type: array
+          items: {type: string}
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    DispatchFeedbackRequest:
+      type: object
+      required: [content, feedbackType]
+      properties:
+        feedbackType:
+          type: string
+          enum: [STAGE, FINAL]
+        content: {type: string}
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    GroupReport:
+      type: object
+      properties:
+        id: {type: string}
+        reportType: {type: string, enum: [WEEKLY, ISSUE]}
+        groupId: {type: string}
+        period: {type: string}
+        title: {type: string}
+        status: {type: string, enum: [DRAFT, SUBMITTED, RETURNED, RESUBMITTED, ARCHIVED]}
+        version: {type: integer}
+        returnedReason: {type: string}
+    GroupReportPageResult:
+      type: object
+      properties:
+        total: {type: integer}
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GroupReport'
+    CreateGroupReportRequest:
+      type: object
+      required: [reportType, period, title, content]
+      properties:
+        reportType: {type: string, enum: [WEEKLY, ISSUE]}
+        period: {type: string}
+        title: {type: string}
+        content: {type: string}
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    ResubmitGroupReportRequest:
+      type: object
+      required: [content]
+      properties:
+        content: {type: string}
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    AssistRequest:
+      type: object
+      properties:
+        id: {type: string}
+        requestNo: {type: string}
+        subject: {type: string}
+        supportType: {type: string}
+        dueAt: {type: string, format: date-time}
+        status:
+          type: string
+          enum: [SUBMITTED, OFFICE_PROCESSING, FORWARDED, DEPT_PROCESSING, FEEDBACK_SUBMITTED, CLOSED]
+        coordinatorDeptId: {type: string}
+        resultSummary: {type: string}
+    AssistRequestPageResult:
+      type: object
+      properties:
+        total: {type: integer}
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/AssistRequest'
+    CreateAssistRequestRequest:
+      type: object
+      required: [subject, supportType, dueAt]
+      properties:
+        subject: {type: string}
+        supportType: {type: string}
+        dueAt: {type: string, format: date-time}
+        description: {type: string}
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    OverviewDashboard:
+      type: object
+      properties:
+        pendingReceiveCount: {type: integer}
+        overdueCount: {type: integer}
+        weeklyReportSubmittedCount: {type: integer}
+        assistOpenCount: {type: integer}
+        cards:
+          type: array
+          items:
+            type: object
+            properties:
+              key: {type: string}
+              label: {type: string}
+              value: {type: integer}
+              route: {type: string}
+    ErrorResponse:
+      type: object
+      properties:
+        code: {type: string}
+        message: {type: string}
+        traceId: {type: string}

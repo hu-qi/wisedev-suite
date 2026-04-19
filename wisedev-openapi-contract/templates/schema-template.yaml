@@ -1,0 +1,16 @@
+components:
+  schemas:
+    resource_item:
+      type: object
+      required: [id, name, status]
+      properties:
+        id:
+          type: string
+          description: 资源唯一标识
+          example: RES-001
+        name:
+          type: string
+          description: 资源名称
+        status:
+          type: string
+          enum: [DRAFT, IN_PROGRESS, COMPLETED, REJECTED]

@@ -1,0 +1,9 @@
+examples:
+  list_success:
+    summary: 查询成功示例
+    value:
+      items: []
+      page:
+        pageNo: 1
+        pageSize: 20
+        total: 0

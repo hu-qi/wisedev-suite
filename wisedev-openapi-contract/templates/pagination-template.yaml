@@ -1,0 +1,27 @@
+components:
+  parameters:
+    page_no:
+      name: page_no
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        example: 1
+    page_size:
+      name: page_size
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 100
+        example: 20
+  schemas:
+    page_info:
+      type: object
+      properties:
+        pageNo:
+          type: integer
+        pageSize:
+          type: integer
+        total:
+          type: integer

@@ -1,0 +1,24 @@
+# 当输入信息不完整时，请先在 YAML 之前输出以下 markdown 区块：
+# 假设与边界
+# - 缺失信息：...
+# - 默认假设：...
+# - 不覆盖范围：...
+
+openapi: 3.0.3
+info:
+  title: TODO_API_TITLE
+  version: 0.1.0
+  description: >-
+    TODO_API_DESCRIPTION
+  contact:
+    name: TODO_TEAM
+    email: team@example.com
+servers:
+  - url: /api
+tags: []
+paths: {}
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  securitySchemes: {}

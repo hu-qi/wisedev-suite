@@ -1,0 +1,11 @@
+mock_profiles:
+  - name: happy_path
+    description: 主流程成功
+  - name: pending_review
+    description: 处理中或待审核状态
+  - name: partial_completion
+    description: 局部完成或部分失败
+  - name: rejected
+    description: 被退回或驳回
+  - name: timeout_retry
+    description: 超时或重试场景

@@ -1,0 +1,17 @@
+{
+  "fontFamily": "Inter, PingFang SC, Microsoft YaHei, sans-serif",
+  "radius": {
+    "card": "12px",
+    "button": "8px"
+  },
+  "spacing": {
+    "xs": 4,
+    "sm": 8,
+    "md": 16,
+    "lg": 24
+  },
+  "layout": {
+    "sidebarWidth": 180,
+    "headerHeight": 72
+  }
+}
