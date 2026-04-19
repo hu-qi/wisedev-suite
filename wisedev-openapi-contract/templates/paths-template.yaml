@@ -1,0 +1,15 @@
+paths:
+  /resources:
+    get:
+      tags: [resource]
+      summary: 查询资源列表
+      parameters:
+        - $ref: '#/components/parameters/page_no'
+        - $ref: '#/components/parameters/page_size'
+      responses:
+        '200':
+          description: 查询成功
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/resource_list_response'

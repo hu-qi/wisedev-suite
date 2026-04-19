@@ -1,0 +1,9 @@
+<template>
+  <section>
+    <header><h1>表单页标题</h1></header>
+    <form>
+      <div>表单字段区</div>
+      <div>操作按钮区</div>
+    </form>
+  </section>
+</template>

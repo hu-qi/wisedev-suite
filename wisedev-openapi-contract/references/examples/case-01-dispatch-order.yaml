@@ -1,0 +1,12 @@
+openapi: 3.0.3
+info:
+  title: 上传下达模块接口示例
+  version: 1.0.0
+paths:
+  /delivery/dispatch-orders:
+    get:
+      tags: [DispatchOrder]
+      summary: 查询调度指令列表
+      responses:
+        '200':
+          description: success

@@ -1,0 +1,26 @@
+components:
+  responses:
+    bad_request:
+      description: 请求参数错误
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_response'
+    unauthorized:
+      description: 未认证或认证失效
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_response'
+    forbidden:
+      description: 无权限访问
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_response'
+    business_conflict:
+      description: 业务状态冲突
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error_response'
