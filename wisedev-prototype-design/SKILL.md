@@ -110,6 +110,7 @@ description: recommend contrasting prototype design directions, generate theme t
 - `DESIGN.md` 负责表达设计哲学、规范、组件模式、Do/Don't
 - `theme.json` 负责表达结构化 token 与脚本必需字段
 
+`DESIGN.md` 格式优先参考 `templates/DESIGN.md`，内容要能指导设计评审和后续视觉细化。
 `theme.json` 格式优先参考 `templates/theme-schema.json`。
 
 若用户尚未做选择，可优先输出：
