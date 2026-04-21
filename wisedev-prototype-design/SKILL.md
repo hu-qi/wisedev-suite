@@ -9,7 +9,7 @@ description: recommend contrasting prototype design directions, generate theme t
 
 输出不是最终 Vue 代码，而是：
 - 3 套差异化设计方向
-- 可传递给下游原型阶段的主题 token 包
+- 可传递给下游原型阶段的设计系统产物
 - 页面级布局约束与视觉说明
 - 对现有原型草稿的设计评审与快速修复建议
 
@@ -23,7 +23,7 @@ description: recommend contrasting prototype design directions, generate theme t
 
 1. 约束设计哲学，而不是只列形式元素。
 2. 默认给出 3 套有区分度的方向，避免“都差不多”。
-3. 输出要能被下游消费，必须落成结构化 theme package。
+3. 输出要能被下游消费，必须同时兼顾 AI 可读性与脚本可消费性。
 4. 设计评审要指出问题，也要给出可执行修复值。
 5. 默认适配中文政企 / 国企业务演示语境，但允许在此基础上做克制的差异化。
 
@@ -89,6 +89,10 @@ description: recommend contrasting prototype design directions, generate theme t
 
 必须输出至少 1 套推荐主题包，可同时附带 3 套完整包。
 
+主产物与辅助产物的关系如下：
+- `DESIGN.md`：主交付，供 AI 工具与人协同阅读
+- `theme.json`：辅助交付，供脚本、模板和原型初始化流程稳定消费
+
 每套主题包至少包含：
 - 基础颜色 token
 - 字体与字号层级
@@ -98,7 +102,15 @@ description: recommend contrasting prototype design directions, generate theme t
 - 图标与插图建议
 - 禁区说明
 
-主题包格式优先参考 `templates/theme-schema.json`。
+推荐输出：
+- 1 份 `DESIGN.md`
+- 1 份 `theme.json`
+
+其中：
+- `DESIGN.md` 负责表达设计哲学、规范、组件模式、Do/Don't
+- `theme.json` 负责表达结构化 token 与脚本必需字段
+
+`theme.json` 格式优先参考 `templates/theme-schema.json`。
 
 若用户尚未做选择，可优先输出：
 - 3 套方向摘要
@@ -144,7 +156,8 @@ description: recommend contrasting prototype design directions, generate theme t
 
 交给 `wisedev-vue-mock-prototype` 时，至少传递：
 - 选定的 `theme_id`
-- 主题包 JSON
+- `DESIGN.md`
+- `theme.json`
 - 页面级设计约束
 - 禁区与可替代方案
 
@@ -159,6 +172,9 @@ description: recommend contrasting prototype design directions, generate theme t
 - `references/design-directions-guide.md`
 - `references/critique-guide.md`
 - `references/example-library.md`
+- `scripts/render_design_md.py`
+- `examples/design-md/`
+- `templates/DESIGN.md`
 - `templates/design-directions.md`
 - `templates/design-critique.md`
 - `templates/theme-schema.json`
