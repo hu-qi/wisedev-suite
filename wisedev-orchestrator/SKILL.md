@@ -34,6 +34,7 @@ description: "orchestrate staged delivery artifact generation from short require
 - 需求规格说明书
 - 概要设计 / 详细设计
 - OpenAPI YAML
+- 原型设计方向 / 主题包
 - Vue + Mock 原型
 - 跨阶段连续交付包
 
@@ -57,6 +58,7 @@ description: "orchestrate staged delivery artifact generation from short require
 - 正式需求规格说明书 → `wisedev-requirement-spec`
 - 概要设计或详细设计 → `wisedev-design-doc`
 - 接口契约、Mock-ready OpenAPI → `wisedev-openapi-contract`
+- 原型设计方向、视觉约束、主题 token、设计评审 → `wisedev-prototype-design`
 - 演示型前端原型与 mock 服务 → `wisedev-vue-mock-prototype`
 
 ## 步骤 6：输出阶段性交付物

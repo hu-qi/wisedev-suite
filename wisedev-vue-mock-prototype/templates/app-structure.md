@@ -4,6 +4,9 @@
 src/
   App.vue
   main.ts
+  theme/
+    tokens.ts
+    theme.css
   router/
     index.ts
   stores/

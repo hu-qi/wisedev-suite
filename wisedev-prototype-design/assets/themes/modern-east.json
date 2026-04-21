@@ -1,0 +1,58 @@
+{
+  "themeId": "modern_east",
+  "themeName": "Modern East",
+  "fitFor": [
+    "proposal-showcase",
+    "high-level-demo"
+  ],
+  "philosophy": "Blend calm whitespace and precise structure to create a refined, contemporary Chinese enterprise tone.",
+  "color": {
+    "bgCanvas": "#F7F5F1",
+    "bgSurface": "#FFFCF7",
+    "bgMuted": "#F0ECE5",
+    "textPrimary": "#2B2A28",
+    "textSecondary": "#5B5650",
+    "textMuted": "#7A746C",
+    "border": "#DDD5CA",
+    "primary": "#8E2F2F",
+    "accent": "#355C66",
+    "success": "#4D7C57",
+    "warning": "#B7791F",
+    "danger": "#A63A3A"
+  },
+  "typography": {
+    "fontFamily": "\"Noto Serif SC\", \"Source Han Serif SC\", \"PingFang SC\", serif",
+    "heroTitle": "32px/1.28/600",
+    "pageTitle": "24px/1.38/600",
+    "sectionTitle": "18px/1.45/600",
+    "body": "14px/1.75/400",
+    "caption": "12px/1.6/400"
+  },
+  "radius": {
+    "panel": "16px",
+    "card": "14px",
+    "control": "10px"
+  },
+  "shadow": {
+    "panel": "0 10px 30px rgba(63, 47, 35, 0.08)",
+    "card": "0 6px 18px rgba(63, 47, 35, 0.05)"
+  },
+  "density": {
+    "pageMaxWidth": "1400px",
+    "gridGap": "24px",
+    "sectionGap": "28px"
+  },
+  "components": {
+    "hero": "Use more whitespace and a concise poetic summary, but keep business metrics visible.",
+    "kpiCard": "Cards should feel refined, with muted backgrounds and controlled accent color.",
+    "list": "Use calmer separators and more generous row height.",
+    "detail": "Pair summary facts with contextual notes rather than dense paragraphs.",
+    "form": "Reduce field crowding and use calm helper text.",
+    "timeline": "Prefer subtle linework and label hierarchy over heavy badges."
+  },
+  "banned": [
+    "heavy black backgrounds",
+    "cartoonish illustration style",
+    "over-decoration that weakens business seriousness"
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "themeId": "stable_enterprise",
+  "themeName": "Stable Enterprise",
+  "fitFor": [
+    "leadership-review",
+    "enterprise-demo"
+  ],
+  "philosophy": "Use restrained hierarchy and credible spacing to make business status trustworthy at first glance.",
+  "color": {
+    "bgCanvas": "#F5F7FA",
+    "bgSurface": "#FFFFFF",
+    "bgMuted": "#EEF2F6",
+    "textPrimary": "#1F2937",
+    "textSecondary": "#475569",
+    "textMuted": "#64748B",
+    "border": "#D7DEE7",
+    "primary": "#1D4ED8",
+    "accent": "#0F766E",
+    "success": "#15803D",
+    "warning": "#B45309",
+    "danger": "#B91C1C"
+  },
+  "typography": {
+    "fontFamily": "\"Source Han Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "heroTitle": "30px/1.25/700",
+    "pageTitle": "24px/1.35/700",
+    "sectionTitle": "18px/1.4/600",
+    "body": "14px/1.65/400",
+    "caption": "12px/1.5/400"
+  },
+  "radius": {
+    "panel": "14px",
+    "card": "12px",
+    "control": "10px"
+  },
+  "shadow": {
+    "panel": "0 10px 24px rgba(15, 23, 42, 0.06)",
+    "card": "0 6px 18px rgba(15, 23, 42, 0.05)"
+  },
+  "density": {
+    "pageMaxWidth": "1440px",
+    "gridGap": "20px",
+    "sectionGap": "24px"
+  },
+  "components": {
+    "hero": "Split hero with one summary column and one metrics/status column.",
+    "kpiCard": "Use clear value-first layout with concise labels and restrained color.",
+    "list": "Keep filters compact and reserve emphasis for status and overdue signals.",
+    "detail": "Place object identity, status and next actions above the fold.",
+    "form": "Group fields into 2-3 sections and keep validation messages explicit.",
+    "timeline": "Use subtle vertical rhythm and one clear active state."
+  },
+  "banned": [
+    "overly dark background",
+    "neon gradients",
+    "emoji icons"
+  ]
+}

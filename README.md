@@ -1,6 +1,6 @@
 # WiseDev Skills Suite
 
-一套面向“需求梳理 → 需求规格 → 概要/详细设计 → OpenAPI 契约 → Vue + Mock 原型”的阶段化 Skills 方案。
+一套面向“需求梳理 → 需求规格 → 概要/详细设计 → OpenAPI 契约 → 原型设计方向 → Vue + Mock 原型”的阶段化 Skills 方案。
 
 说明：真正的 AI Agent 控制面位于 `using-wisedev/` 与 `wisedev-orchestrator/`，README 仅用于辅助理解，不作为主要行为规约入口。
 
@@ -19,6 +19,7 @@
 - `wisedev-requirement-spec/`：需求规格说明书。
 - `wisedev-design-doc/`：概要设计、详细设计。
 - `wisedev-openapi-contract/`：OpenAPI YAML、Mock 示例、接口设计检查清单。
+- `wisedev-prototype-design/`：原型设计方向、主题 token 包、设计评审。
 - `wisedev-vue-mock-prototype/`：Vue 3 + Vite + TypeScript + Pinia + Router + 本地 Mock 原型。
 - `shared/`：跨阶段通用模板与检查清单。
 
@@ -30,6 +31,18 @@
 
 本套件已内置 `shared/full-chain-examples/`，其中 `case-01-upload-delivery` 提供从源输入到 Vue + mock 原型的完整样例链路，可作为总控 Skill 与子 Skill 的统一参考。
 
+## 推荐新链路
+
+当任务目标是“高保真、可演示、风格更稳定的原型”时，推荐按下面顺序推进：
+
+1. `wisedev-openapi-contract` 形成稳定契约
+2. `wisedev-prototype-design` 产出设计方向与 theme package
+3. `wisedev-vue-mock-prototype/scripts/scaffold_from_openapi.py` 生成模块、路由与 theme 接入草稿
+4. `wisedev-vue-mock-prototype/scripts/init_vue_prototype.py` 初始化带 theme 的 Vue 原型骨架
+
+如需一个现成示范，可直接参考：
+- `shared/full-chain-examples/case-01-upload-delivery/12-theme-prototype-workflow.md`
+
 ## 实现关注点
 
 如果使用者关心这套 Skill 的实现方式，应优先查看：
@@ -37,3 +50,4 @@
 - `suite-architecture.md`：查看总控与子 Skill 的职责边界、阶段链路与交接规则。
 - `shared/full-chain-examples/case-01-upload-delivery/`：查看完整链路如何从源输入逐步落到规格、设计、契约与原型。
 - `wisedev-openapi-contract/scripts/` 与 `wisedev-vue-mock-prototype/scripts/`：查看当前已提供的自动化脚本范围。
+- `wisedev-prototype-design/`：查看设计方向、theme package 与评审模板如何约束下游原型。

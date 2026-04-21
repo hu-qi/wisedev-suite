@@ -1,0 +1,58 @@
+{
+  "themeId": "data_command",
+  "themeName": "Data Command",
+  "fitFor": [
+    "dispatch-center",
+    "supervision-dashboard"
+  ],
+  "philosophy": "Make the dashboard feel operational and action-oriented without turning it into a noisy command center.",
+  "color": {
+    "bgCanvas": "#F2F5F9",
+    "bgSurface": "#FFFFFF",
+    "bgMuted": "#E8EEF6",
+    "textPrimary": "#0F172A",
+    "textSecondary": "#334155",
+    "textMuted": "#64748B",
+    "border": "#CBD5E1",
+    "primary": "#0F5CDD",
+    "accent": "#0F766E",
+    "success": "#0F9F6E",
+    "warning": "#C2410C",
+    "danger": "#C81E1E"
+  },
+  "typography": {
+    "fontFamily": "\"DIN Alternate\", \"Source Han Sans SC\", \"PingFang SC\", sans-serif",
+    "heroTitle": "32px/1.2/700",
+    "pageTitle": "24px/1.3/700",
+    "sectionTitle": "18px/1.35/700",
+    "body": "14px/1.6/400",
+    "caption": "12px/1.45/500"
+  },
+  "radius": {
+    "panel": "12px",
+    "card": "10px",
+    "control": "8px"
+  },
+  "shadow": {
+    "panel": "0 12px 26px rgba(15, 23, 42, 0.08)",
+    "card": "0 6px 16px rgba(15, 23, 42, 0.06)"
+  },
+  "density": {
+    "pageMaxWidth": "1480px",
+    "gridGap": "18px",
+    "sectionGap": "20px"
+  },
+  "components": {
+    "hero": "Hero should look like a mission status board with metric emphasis.",
+    "kpiCard": "Cards may use stronger colored top bars or side accents.",
+    "list": "Prioritize row scannability and alarm-state recognition.",
+    "detail": "Keep status, SLA and next action visible above the fold.",
+    "form": "Use section dividers and completion hints to reduce friction.",
+    "timeline": "Highlight bottlenecks and delayed nodes with status color."
+  },
+  "banned": [
+    "sci-fi neon",
+    "dense full-width tables with no breathing room",
+    "decorative charts without operational meaning"
+  ]
+}

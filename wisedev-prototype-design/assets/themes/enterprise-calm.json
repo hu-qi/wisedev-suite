@@ -1,0 +1,58 @@
+{
+  "themeId": "stable_enterprise",
+  "themeName": "Enterprise Calm",
+  "fitFor": [
+    "leadership-review",
+    "government-enterprise-demo"
+  ],
+  "philosophy": "Present business facts with restraint, hierarchy and a stable visual cadence that supports trust.",
+  "color": {
+    "bgCanvas": "#F6F8FB",
+    "bgSurface": "#FFFFFF",
+    "bgMuted": "#EEF3F8",
+    "textPrimary": "#1E293B",
+    "textSecondary": "#475569",
+    "textMuted": "#64748B",
+    "border": "#D9E2EC",
+    "primary": "#175CD3",
+    "accent": "#0F766E",
+    "success": "#15803D",
+    "warning": "#B45309",
+    "danger": "#B42318"
+  },
+  "typography": {
+    "fontFamily": "\"Source Han Sans SC\", \"PingFang SC\", \"Microsoft YaHei\", sans-serif",
+    "heroTitle": "30px/1.25/700",
+    "pageTitle": "24px/1.35/700",
+    "sectionTitle": "18px/1.4/600",
+    "body": "14px/1.65/400",
+    "caption": "12px/1.5/400"
+  },
+  "radius": {
+    "panel": "14px",
+    "card": "12px",
+    "control": "10px"
+  },
+  "shadow": {
+    "panel": "0 10px 24px rgba(15, 23, 42, 0.06)",
+    "card": "0 6px 18px rgba(15, 23, 42, 0.05)"
+  },
+  "density": {
+    "pageMaxWidth": "1440px",
+    "gridGap": "20px",
+    "sectionGap": "24px"
+  },
+  "components": {
+    "hero": "Wide and calm; summary copy should stay within two short paragraphs.",
+    "kpiCard": "Four-card grid with compact trend indicators.",
+    "list": "Lightweight filter row with clear status chips and sparse dividers.",
+    "detail": "Top summary card followed by timeline and notes columns.",
+    "form": "Two-column sections with explicit helper text.",
+    "timeline": "Neutral axis with one strong current-state marker."
+  },
+  "banned": [
+    "full dark mode",
+    "glow effects",
+    "oversized gradients"
+  ]
+}

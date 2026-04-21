@@ -48,7 +48,13 @@
 由 `wisedev-openapi-contract` 完成：
 - 输出单文件 `openapi.yaml`、Mock 示例、接口检查清单。
 
-### 阶段 F：Vue + Mock 原型
+### 阶段 F：原型设计方向
+由 `wisedev-prototype-design` 完成：
+- 输出 3 套可对比的设计方向，而不是直接跳进单一视觉方案。
+- 形成可落地的主题 token、布局约束、页面气质说明和适用场景。
+- 对后续原型草图或代码成品给出设计评审与 Quick Wins。
+
+### 阶段 G：Vue + Mock 原型
 由 `wisedev-vue-mock-prototype` 完成：
 - 输出可本地运行的 Vue 原型骨架、路由、页面模块、mock 服务、演示说明。
 

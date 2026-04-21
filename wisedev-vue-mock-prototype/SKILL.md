@@ -6,7 +6,7 @@ description: generate vue-based frontend prototype plans and code scaffolds with
 # 目标
 在 `using-wisedev` 已确认这是明确单阶段任务，或 `wisedev-orchestrator` 已完成阶段判断后，再由本 Skill 处理当前阶段。
 
-首次使用时，优先参考 `references/example-library.md`，并对照 `../shared/full-chain-examples/case-01-upload-delivery/05-vue-mock-prototype.md` 与 `06-vue-prototype-code/`。
+首次使用时，优先参考 `references/example-library.md`，并对照 `../shared/full-chain-examples/case-01-upload-delivery/05-vue-mock-prototype.md` 与 `06-vue-prototype-code/`。若上游已提供 `wisedev-prototype-design` 的主题包，应优先消费其 token、布局约束与页面气质说明，而不是重新自由发挥。
 
 
 输出一套可本地运行、可演示复杂流程、可与 OpenAPI 契约对齐的 Vue 原型方案与代码骨架。
@@ -31,6 +31,7 @@ description: generate vue-based frontend prototype plans and code scaffolds with
 - 功能模块清单
 - Store / 状态结构建议
 - Mock 模块拆分方案
+- Theme / 样式 token 接入方案
 - 核心页面代码样板
 - 场景化 mock 数据
 - 本地运行说明
@@ -43,12 +44,15 @@ description: generate vue-based frontend prototype plans and code scaffolds with
 - mock 数据必须覆盖：成功、空态、处理中、驳回、部分完成、超时等关键演示场景。
 - 页面命名、路由命名、模块命名必须稳定，避免 `Page1`、`TempView` 之类名称。
 - 目标是“演示型可运行原型”，不是生产级 UI 完整实现。
+- 若存在多套设计方向，必须先明确当前选用的 theme id，再开始落代码。
+- 若上游提供 theme package，应通过 `src/theme/` 统一接入，避免把颜色、圆角、阴影散落在各页面中硬编码。
 
 # 脚本使用
 
 - `scripts/init_vue_prototype.py`：初始化原型骨架目录和基础文件。
+- `scripts/init_vue_prototype.py <target> [theme-json]`：初始化原型骨架目录；若提供 `wisedev-prototype-design` 生成的主题包 JSON，则同步生成 `src/theme/`。
 - `scripts/check_prototype_structure.py`：检查目录、路由、mock、页面、运行说明是否齐全。
-- `scripts/scaffold_from_openapi.py`：根据 OpenAPI tags 和 paths 生成 mock 模块与 route 草稿。
+- `scripts/scaffold_from_openapi.py <openapi.yaml> [theme-json] [--write target]`：根据 OpenAPI tags 和 paths 生成 mock 模块、route 草稿、theme 接入提示；必要时直接写出 `src/modules/*` 骨架。
 
 # 高质量样例优先
 
@@ -64,6 +68,8 @@ description: generate vue-based frontend prototype plans and code scaffolds with
 - `templates/tsconfig-template.json`
 - `templates/router-template.ts`
 - `templates/store-template.ts`
+- `templates/theme-tokens-template.ts`
+- `templates/theme-css-template.css`
 - `templates/app-shell-template.vue`
 - `templates/layout-template.vue`
 - `templates/list-page-template.vue`

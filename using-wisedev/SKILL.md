@@ -14,6 +14,7 @@ description: enforce wisedev workflow discipline before product-delivery tasks. 
    - 需求规格说明书
    - 概要设计 / 详细设计
    - OpenAPI YAML
+   - 原型设计方向 / 配色方案 / 视觉风格 / 设计评审
    - Vue + Mock 原型
    - 从一个阶段推进到另一个阶段的连续交付
 2. 只要任务可能跨越两个及以上阶段，必须先交给 `wisedev-orchestrator`。
@@ -29,6 +30,7 @@ description: enforce wisedev workflow discipline before product-delivery tasks. 
 - “写需求规格说明书 / 输出 SRS / 细化需求规格” → `wisedev-requirement-spec`
 - “写概要设计 / 详细设计 / 模块设计 / 状态机 / 数据模型” → `wisedev-design-doc`
 - “生成 OpenAPI / 接口契约 / mock-ready openapi yaml” → `wisedev-openapi-contract`
+- “推荐原型设计方向 / 设计风格 / 配色方案 / 设计评审” → `wisedev-prototype-design`
 - “做 Vue 原型 / 前端 mock 原型 / 演示型原型” → `wisedev-vue-mock-prototype`
 
 ## 默认回退策略

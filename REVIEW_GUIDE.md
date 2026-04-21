@@ -23,10 +23,12 @@
 
 ## 三、契约与原型层
 - `wisedev-openapi-contract/`
+- `wisedev-prototype-design/`
 - `wisedev-vue-mock-prototype/`
 
 重点关注：
 - OpenAPI 模板是否足够约束接口命名、错误模型、分页、安全、示例。
+- 原型设计方向、theme package 与设计评审模板是否足够清楚、可复用。
 - Vue 原型模板是否足够覆盖复杂业务演示、路由、状态、Mock 场景与本地运行。
 - scripts 是否真能提升稳定性，而不是仅做占位。
 

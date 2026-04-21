@@ -11,6 +11,8 @@ REQUIRED = [
     'src/main.ts',
     'src/router/index.ts',
     'src/mock',
+    'src/theme/tokens.ts',
+    'src/theme/theme.css',
 ]
 
 

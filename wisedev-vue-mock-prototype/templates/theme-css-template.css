@@ -1,0 +1,113 @@
+:root {
+  --color-bg-canvas: #f6f8fb;
+  --color-bg-surface: #ffffff;
+  --color-bg-muted: #eef3f8;
+  --color-text-primary: #1e293b;
+  --color-text-secondary: #475569;
+  --color-border: #d9e2ec;
+  --color-primary: #175cd3;
+  --color-accent: #0f766e;
+  --color-success: #15803d;
+  --color-warning: #b45309;
+  --color-danger: #b42318;
+
+  --radius-panel: 14px;
+  --radius-card: 12px;
+  --radius-control: 10px;
+
+  --shadow-panel: 0 10px 24px rgba(15, 23, 42, 0.06);
+  --shadow-card: 0 6px 18px rgba(15, 23, 42, 0.05);
+
+  --layout-max-width: 1440px;
+  --layout-grid-gap: 20px;
+  --layout-section-gap: 24px;
+  --layout-sidebar-width: 220px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg-canvas);
+  color: var(--color-text-primary);
+  font-family: "Source Han Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+.page-section {
+  display: grid;
+  gap: var(--layout-section-gap);
+  max-width: var(--layout-max-width);
+}
+
+.page-header {
+  display: grid;
+  gap: 8px;
+}
+
+.page-title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.35;
+}
+
+.page-summary {
+  margin: 0;
+  max-width: 720px;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+}
+
+.hero-panel,
+.panel-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  background: var(--color-bg-surface);
+  box-shadow: var(--shadow-panel);
+  padding: 20px;
+}
+
+.panel-grid {
+  display: grid;
+  gap: var(--layout-grid-gap);
+}
+
+.panel-grid--cards {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.detail-grid {
+  display: grid;
+  gap: var(--layout-grid-gap);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.detail-grid__full {
+  grid-column: 1 / -1;
+}
+
+.form-shell {
+  display: grid;
+  gap: 20px;
+}
+
+.form-section {
+  min-height: 160px;
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-card);
+  background: var(--color-bg-muted);
+  padding: 16px;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 960px) {
+  .panel-grid--cards,
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -41,6 +41,16 @@
 
 目标子 Skill：`wisedev-openapi-contract`
 
+### 原型设计方向
+关键词示例：
+- 设计方向
+- 视觉风格
+- 配色方案
+- 设计评审
+- 原型主题
+
+目标子 Skill：`wisedev-prototype-design`
+
 ### Vue 原型
 关键词示例：
 - vue 原型

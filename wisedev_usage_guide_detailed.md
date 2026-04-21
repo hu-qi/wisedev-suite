@@ -5,7 +5,7 @@
 本文用于系统梳理 WiseDev Skills 套件的两部分核心内容：
 
 1. **安装与使用顺序建议**
-2. **7 个 Skill 的推荐提示词清单**
+2. **8 个 Skill 的推荐提示词清单**
 
 目标是帮助团队在实际使用时做到：
 
@@ -19,7 +19,7 @@
 
 ## 2. WiseDev Skills 套件组成
 
-当前 WiseDev Skills 套件共包含 7 个 Skill：
+当前 WiseDev Skills 套件共包含 8 个 Skill：
 
 1. `using-wisedev`
 2. `wisedev-orchestrator`
@@ -27,13 +27,14 @@
 4. `wisedev-requirement-spec`
 5. `wisedev-design-doc`
 6. `wisedev-openapi-contract`
-7. `wisedev-vue-mock-prototype`
+7. `wisedev-prototype-design`
+8. `wisedev-vue-mock-prototype`
 
 它们的关系不是并列平铺，而是一个分层结构：
 
 - `using-wisedev`：元 Skill，负责先判断要不要进入 WiseDev 体系，以及应进入总控还是单阶段 Skill
 - `wisedev-orchestrator`：总控 Skill，负责多阶段流程控制、上下文包、阶段判断、阶段交接
-- 其余 5 个为阶段型子 Skill，分别负责需求梳理、需求规格、设计文档、API 契约、Vue 原型
+- 其余 6 个为阶段型子 Skill，分别负责需求梳理、需求规格、设计文档、API 契约、原型设计方向、Vue 原型
 
 ---
 
@@ -47,14 +48,15 @@
 4. `wisedev-requirement-spec`
 5. `wisedev-design-doc`
 6. `wisedev-openapi-contract`
-7. `wisedev-vue-mock-prototype`
+7. `wisedev-prototype-design`
+8. `wisedev-vue-mock-prototype`
 
 ### 3.1 为什么要这样安装
 
 原因很简单：
 
 - 前两个 Skill 负责“先判断、先路由、先控流程”
-- 后五个 Skill 才是具体阶段的专业输出能力
+- 后六个 Skill 才是具体阶段的专业输出能力
 
 如果先装后五个、不装前两个，AI 工具在面对复杂任务时容易直接跳到某个阶段，导致：
 
@@ -99,6 +101,7 @@ WiseDev 的使用顺序，取决于用户输入的清晰程度。
    - 需求规格说明书
    - 设计文档
    - OpenAPI YAML
+   - 原型设计方向 / theme package
    - Vue + mock 原型
 
 #### 为什么不能一步到位
@@ -148,6 +151,9 @@ WiseDev 的使用顺序，取决于用户输入的清晰程度。
 - **OpenAPI / 接口契约**
   → `wisedev-openapi-contract`
 
+- **设计方向 / 视觉风格 / 配色方案 / 原型 theme**
+  → `wisedev-prototype-design`
+
 - **Vue + mock 原型**
   → `wisedev-vue-mock-prototype`
 
@@ -188,7 +194,8 @@ WiseDev 的使用顺序，取决于用户输入的清晰程度。
 3. 需求规格说明书
 4. 设计文档
 5. OpenAPI YAML
-6. Vue + mock 原型
+6. 原型设计方向 / theme package
+7. Vue + mock 原型
 
 #### 核心原则
 
@@ -217,13 +224,15 @@ WiseDev 的使用顺序，取决于用户输入的清晰程度。
 5. 确认后继续生成需求规格说明书
 6. 再确认后继续生成设计文档
 7. 再生成 `openapi.yaml`
-8. 最后生成 Vue + mock 原型
+8. 再生成原型设计方向与 theme package
+9. 最后生成 Vue + mock 原型
 
 ### 5.1 这样做的好处
 
 - 需求不容易漂移
 - 设计不会脱离规格
 - API 契约更稳定
+- 原型视觉方向可显式审阅，而不是隐含在代码里
 - 原型更像“基于契约生成”，而不是自由发挥
 - 更适合多人评审和多轮迭代
 
@@ -237,7 +246,8 @@ WiseDev 的使用顺序，取决于用户输入的清晰程度。
 2. `wisedev-orchestrator`
 3. `shared/full-chain-examples/case-01-upload-delivery`
 4. `wisedev-openapi-contract`
-5. `wisedev-vue-mock-prototype`
+5. `wisedev-prototype-design`
+6. `wisedev-vue-mock-prototype`
 
 ### 6.1 为什么这样看
 
@@ -247,6 +257,7 @@ WiseDev 的使用顺序，取决于用户输入的清晰程度。
 - `wisedev-orchestrator`：有没有强制阶段工作流
 - `case-01`：完整链路是否跑得通
 - `openapi-contract`：契约是否足够稳定
+- `prototype-design`：视觉方向、theme package 和评审机制是否足够清晰
 - `vue-mock-prototype`：原型是否真的受契约与样例约束
 
 ---
@@ -271,7 +282,7 @@ WiseDev 的使用顺序，取决于用户输入的清晰程度。
 
 ---
 
-# 8. 7 个 Skill 推荐提示词清单
+# 8. 8 个 Skill 推荐提示词清单
 
 下面给出每个 Skill 的推荐提示词。目标是：
 

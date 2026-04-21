@@ -56,6 +56,7 @@
 
 - 参考 `shared/full-chain-examples/case-01-upload-delivery/04-openapi.yaml` 与 `05-vue-mock-prototype.md`。
 - 当前 Skill 负责把契约映射到页面、路由、mock 场景与演示路径。
+- 若需要演示 theme package 驱动的原型链路，可继续参考 `shared/full-chain-examples/case-01-upload-delivery/12-theme-prototype-workflow.md`。
 
 
 ## 标杆案例补充
