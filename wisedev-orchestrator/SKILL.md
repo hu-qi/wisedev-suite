@@ -9,6 +9,8 @@ description: "orchestrate staged delivery artifact generation from short require
 
 在任何相关任务开始前，优先由 `using-wisedev` 判断是否应启用 WiseDev；一旦确定是跨阶段或模糊任务，再由本 Skill 接管阶段判断与路由。
 
+默认假设本套件以 bundle 方式安装，并能访问 `shared/` 下的完整链路样例与公共资源。
+
 # 强制规则
 
 1. `using-wisedev` 已确认需要进入 WiseDev 后，只要任务可能跨越两个及以上阶段，必须先由本 Skill 判断阶段，再决定是否路由给子 Skill。

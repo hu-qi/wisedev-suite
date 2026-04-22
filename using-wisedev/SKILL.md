@@ -7,6 +7,8 @@ description: enforce wisedev workflow discipline before product-delivery tasks. 
 
 作为 WiseDev 套件的元 Skill，在任何需求、设计、契约、原型类任务开始前，先约束代理检查是否应启用 WiseDev 工作流。
 
+默认假设本套件以 bundle 方式安装，并可访问 `shared/` 下的共享模板与完整链路样例。
+
 # 强制规则
 
 1. 只要任务涉及以下任一内容，先检查是否应启用 WiseDev：

@@ -23,6 +23,17 @@
 - `wisedev-vue-mock-prototype/`：Vue 3 + Vite + TypeScript + Pinia + Router + 本地 Mock 原型。
 - `shared/`：跨阶段通用模板与检查清单。
 
+## 安装建议
+
+推荐以 **bundle 安装** 的方式使用整个 `wisedev-suite`，而不是把每个 Skill 目录拆开单独安装。
+
+原因：
+- 多个 Skill 会共同引用 `shared/` 下的模板、检查清单和完整链路样例
+- `case-01-upload-delivery` 等样例并不属于单一 Skill，而是整套方法论的公共参考
+- `wisedev-prototype-design` 与 `wisedev-vue-mock-prototype` 之间存在显式交接关系，需要完整目录结构才能稳定工作
+
+如果只安装单个 Skill 目录，`../shared/...` 这类共享资源路径很容易失效。
+
 ## 方法论来源
 
 这套方案借鉴了分阶段技能编排的思路：先通过提问和澄清收敛需求，再输出可审阅的中间产物，再将中间产物交给下一个阶段继续处理。该分阶段 workflow 与 Superpowers 的“先规格化、再计划化、再分技能执行”的模式一致。

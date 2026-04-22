@@ -40,7 +40,11 @@
 
 ## 3. 推荐安装顺序
 
-建议按以下顺序安装：
+推荐以 **bundle 安装** 的方式整体安装 `wisedev-suite`。
+
+### 推荐安装内容
+
+安装时应完整保留：
 
 1. `using-wisedev`
 2. `wisedev-orchestrator`
@@ -50,6 +54,7 @@
 6. `wisedev-openapi-contract`
 7. `wisedev-prototype-design`
 8. `wisedev-vue-mock-prototype`
+9. `shared/`
 
 ### 3.1 为什么要这样安装
 
@@ -57,15 +62,21 @@
 
 - 前两个 Skill 负责“先判断、先路由、先控流程”
 - 后六个 Skill 才是具体阶段的专业输出能力
+- `shared/` 提供跨阶段模板、检查清单和完整链路样例，是整套 bundle 的公共依赖
 
-如果先装后五个、不装前两个，AI 工具在面对复杂任务时容易直接跳到某个阶段，导致：
+如果只拆装单个 Skill 目录，而不保留 `shared/` 与完整目录结构，常见问题包括：
+- 无法读取 `shared/full-chain-examples/case-01-upload-delivery/README.md`
+- 无法稳定复用完整链路样例
+- `wisedev-prototype-design` 与 `wisedev-vue-mock-prototype` 的交接信息不完整
+
+如果先装后五个、不装前两个，AI 工具在面对复杂任务时还容易直接跳到某个阶段，导致：
 
 - 没有先做输入归一化
 - 没有先做阶段判断
 - 没有先做上下文包
 - 直接生成下游产物，导致上游缺失
 
-所以，**最稳的方式永远是先装元 Skill 和总控，再装阶段 Skill**。
+所以，**最稳的方式永远是按 bundle 保留整个 `wisedev-suite` 目录结构**。
 
 ---
 
