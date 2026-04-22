@@ -6,7 +6,7 @@ description: generate vue-based frontend prototype plans and code scaffolds with
 # 目标
 在 `using-wisedev` 已确认这是明确单阶段任务，或 `wisedev-orchestrator` 已完成阶段判断后，再由本 Skill 处理当前阶段。
 
-首次使用时，优先参考 `references/example-library.md`，并对照 `../shared/full-chain-examples/case-01-upload-delivery/05-vue-mock-prototype.md` 与 `06-vue-prototype-code/`。若上游已提供 `wisedev-prototype-design` 的主题包，应优先消费其 token、布局约束与页面气质说明，而不是重新自由发挥。
+首次使用时，优先参考 `references/example-library.md`，并对照 `../shared/full-chain-examples/case-01-upload-delivery/05-vue-mock-prototype.md` 与 `06-vue-prototype-code/`。默认应先由 `wisedev-prototype-design` 提供 `DESIGN.md` 与 `theme.json`，再由本 Skill 消费其 token、布局约束与页面气质说明。
 
 
 输出一套可本地运行、可演示复杂流程、可与 OpenAPI 契约对齐的 Vue 原型方案与代码骨架。
@@ -46,6 +46,7 @@ description: generate vue-based frontend prototype plans and code scaffolds with
 - 目标是“演示型可运行原型”，不是生产级 UI 完整实现。
 - 若存在多套设计方向，必须先明确当前选用的 theme id，再开始落代码。
 - 若上游提供 theme package，应通过 `src/theme/` 统一接入，避免把颜色、圆角、阴影散落在各页面中硬编码。
+- 若未提供 `DESIGN.md` / `theme.json`，必须明确写出当前是在“跳过设计前置层”的假设下生成原型。
 
 # 脚本使用
 

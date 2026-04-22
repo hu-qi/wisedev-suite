@@ -16,6 +16,7 @@ description: "orchestrate staged delivery artifact generation from short require
 3. 在任何子 Skill 输出前，必须先形成上下文包；在任何阶段结束后，必须形成阶段交接单。
 4. 默认一次只完成一个阶段；若用户要求连续推进，先给出阶段计划，再分阶段输出。
 5. 对复杂或模糊输入，优先参考完整链路样例；对明确阶段任务，优先参考该阶段样例库。
+6. 当目标产物是 `Vue + Mock 原型`，且用户未明确要求“低保真快速占位”时，默认先进入 `wisedev-prototype-design`，再交给 `wisedev-vue-mock-prototype`。
 
 # 必须先做的事
 
@@ -59,7 +60,7 @@ description: "orchestrate staged delivery artifact generation from short require
 - 概要设计或详细设计 → `wisedev-design-doc`
 - 接口契约、Mock-ready OpenAPI → `wisedev-openapi-contract`
 - 原型设计方向、视觉约束、主题 token、设计评审 → `wisedev-prototype-design`
-- 演示型前端原型与 mock 服务 → `wisedev-vue-mock-prototype`
+- 演示型前端原型与 mock 服务 → 默认先 `wisedev-prototype-design`，完成后再进入 `wisedev-vue-mock-prototype`
 
 ## 步骤 6：输出阶段性交付物
 输出必须是当前阶段的正式草稿，而不是下一阶段的半成品摘要。

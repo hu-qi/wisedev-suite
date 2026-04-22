@@ -81,23 +81,30 @@
 4. Mock 示例
 5. 待确认字段或错误码
 
-## 样例 5：已有 API / 设计 → 进入 Vue + Mock 原型阶段
+## 样例 5：已有 API / 设计 → 先进入原型设计方向，再进入 Vue + Mock 原型阶段
 
 ### 输入特征
 - 用户明确要“本地可跑的 Vue 原型”
 - 希望能演示复杂流程和多角色业务
 
 ### 阶段判断
-- 当前最合适阶段：前端原型与 mock
-- 目标子 Skill：`wisedev-vue-mock-prototype`
+- 当前最合适阶段：原型设计方向
+- 当前目标子 Skill：`wisedev-prototype-design`
+
+### 默认规则
+- 若用户没有明确说“只要低保真快速占位”，默认先输出 `DESIGN.md` 与 `theme.json`
+- 只有在用户明确要求低保真、快速占位、无需视觉方向控制时，才允许直接进入 `wisedev-vue-mock-prototype`
 
 ### 推荐输出顺序
-1. 项目结构
-2. 页面清单
-3. 路由图
-4. mock 场景矩阵
-5. 关键代码文件
-6. 本地运行说明
+1. 设计方向与推荐 theme
+2. `DESIGN.md`
+3. `theme.json`
+4. 页面级设计约束
+5. 交接给 `wisedev-vue-mock-prototype`
+
+### 下一步
+- 在 `wisedev-prototype-design` 完成后，再进入 `wisedev-vue-mock-prototype`
+- 下游原型应优先消费 `DESIGN.md` 与 `theme.json`，而不是重新自由发挥
 
 ## 完整链路样例入口
 
