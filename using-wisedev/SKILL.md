@@ -9,6 +9,26 @@ description: enforce wisedev workflow discipline before product-delivery tasks. 
 
 默认假设本套件以 bundle 方式安装，并可访问 `shared/` 下的共享模板与完整链路样例。
 
+# 兼容原则
+
+1. 本 Skill 必须继续兼容原有单技能、单阶段、非 team 场景的使用方式。
+2. team-aware 能力是增强分支，不是唯一分支。
+3. 若未检测到 team 协作上下文，沿用原有 WiseDev 入口判断和子 Skill 路由逻辑。
+4. 不得因为启用 team-aware 规则而让原本可直接处理的单阶段任务无故变重、变慢或强依赖额外目录。
+
+# Team-aware 识别规则
+
+当运行环境显式表现出以下任一特征时，可视为 team 协作上下文：
+- 当前任务已明确由长期协作团队接管
+- 上下文中存在 leader / reviewer / shared artifacts / handoff 等团队协作约束
+- 任务要求围绕共享工件进行角色分工、审查、验收或阶段推进
+
+若已识别为 team 协作上下文，则增加以下规则：
+1. 不直接把多阶段任务绑定到某个子 Skill，优先交由 `wisedev-orchestrator` 作为 leader 控制层判断负责人。
+2. 即使是明确单阶段任务，也要先判断：这是应该由当前团队中的某个角色接手，还是仍可作为独立子 Skill 直接执行。
+3. 在 team 场景中，本 Skill 的职责从“选择子 Skill”升级为“决定是否进入团队协作控制面”。
+4. 不要在 team 场景中绕过 leader 直接把跨阶段任务交给下游产出型 Skill。
+
 # 强制规则
 
 1. 只要任务涉及以下任一内容，先检查是否应启用 WiseDev：
@@ -43,21 +63,39 @@ description: enforce wisedev workflow discipline before product-delivery tasks. 
 - 上游产物明显缺失
 - 用户同时要求“梳理 + 规格 + 设计 + API + 原型”中的两个及以上
 - 输入材料中混有会议纪要、设计片段、接口片段等多种来源
+- 已识别为 team 协作上下文，且任务需要 leader 判断负责人、共享工件或审查闭环
+
+# Team 场景下的控制策略
+
+在 team 场景中，请按以下顺序执行：
+1. 先判断当前请求是否应进入长期协作团队控制面。
+2. 再判断该任务更适合作为：
+   - leader 的阶段判断任务
+   - 某个团队角色的阶段执行任务
+   - reviewer 的审查任务
+3. 若需要团队分工、共享工件、审查、交接或多角色协作，优先交给 `wisedev-orchestrator`。
+4. 仅当当前请求在 team 上下文中仍然是“明确、单阶段、边界清晰、可独立完成”的任务时，才直接进入对应子 Skill。
 
 # 执行顺序
 
 1. 先判断：这是单阶段任务还是跨阶段任务。
 2. 再判断：输入是否满足单阶段最低前提。
-3. 若不满足，立即交给 `wisedev-orchestrator`。
-4. 若满足，选择唯一最合适的子 Skill。
-5. 优先参考 `references/entry-mapping.md` 与 `references/activation-rules.md`。
+3. 再判断：当前是否处于 team 协作上下文。
+4. 若不满足单阶段前提，立即交给 `wisedev-orchestrator`。
+5. 若满足单阶段前提但处于 team 上下文，优先让 `wisedev-orchestrator` 判断是否需要 leader 分配角色。
+6. 若满足单阶段前提且不处于 team 上下文，选择唯一最合适的子 Skill。
+7. 优先参考 `references/entry-mapping.md` 与 `references/activation-rules.md`。
 
 # 样例优先级
 
 - 跨阶段、复杂、模糊任务：优先看 `../shared/full-chain-examples/case-01-upload-delivery/README.md`，然后交给 `wisedev-orchestrator`。
 - 明确单阶段任务：优先看目标子 Skill 的 `references/example-library.md`。
+- Team 协作任务：优先参考 `../AgentTeam/` 下的角色、模板、运行规则，再交给 `wisedev-orchestrator` 控制推进。
 
 # 可用资源
 
 - `references/activation-rules.md`
 - `references/entry-mapping.md`
+- `../AgentTeam/COMPATIBILITY_GUIDELINES.md`
+- `../AgentTeam/TEAM_RUNTIME_RULES.md`
+- `../AgentTeam/ROLE_SPEC.md`
