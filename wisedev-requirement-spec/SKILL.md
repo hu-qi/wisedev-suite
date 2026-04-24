@@ -11,6 +11,26 @@ description: write structured chinese requirement specifications from rough need
 
 输出正式、可评审、可追踪的《需求规格说明书》。
 
+# 兼容原则
+
+1. 本 Skill 必须继续兼容原有单阶段、独立输出 SRS 的使用方式。
+2. team-aware 能力仅作为增强分支，不替换当前“直接输出正式需求规格”的主路径。
+3. 若未检测到 team 协作上下文，沿用原有章节结构、写作风格与输出顺序。
+4. 不得因为 team-aware 规则而强制依赖 leader、reviewer、共享工件或 `AgentTeam/` 目录。
+
+# Team-aware 轻量规则
+
+若处于 team 协作上下文，则增加以下轻量规则：
+1. 默认将本 Skill 视作 `product_analyst` 的正式规格输出能力。
+2. 若已提供共享工件路径，应优先基于已验收的上下文包或需求简报输出，并尽量回写：
+   - `requirement-spec.md`
+   - `acceptance-criteria.md`
+   - `decision-log.md`
+   - `stage-handoff.md`
+3. 若上游输入仍存在关键不稳定点，应显式列入“风险与待定事项”或回推给 leader / reviewer，而不是静默定案。
+4. 本 Skill 不应越界输出正式设计、OpenAPI 或前端原型内容。
+5. 在 team 场景中，优先维护需求追踪关系和范围边界，为下游设计、API 和原型阶段提供稳定输入。
+
 # 输入前提
 
 优先使用以下任一输入：
@@ -44,6 +64,7 @@ description: write structured chinese requirement specifications from rough need
 - 每一项功能需求应可被测试验证。
 - 对优先级不明确的要求，默认不做强行排序，但可用“核心 / 重要 / 可选”分组。
 - 需要时补充“范围外事项”，避免范围蔓延。
+- 在 team 场景中，若需求边界存在不稳定前提，必须显式说明，不得默默扩张或收缩范围。
 
 # 高质量样例优先
 
@@ -61,3 +82,5 @@ description: write structured chinese requirement specifications from rough need
 - `templates/risk-and-issues.md`
 - `templates/business-scenario.md`
 - `templates/project-overview.md`
+- `../AgentTeam/shared/templates/decision-log.md`
+- `../AgentTeam/shared/templates/stage-handoff.md`
