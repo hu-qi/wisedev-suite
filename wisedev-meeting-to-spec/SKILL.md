@@ -11,6 +11,25 @@ description: analyze meeting notes, transcript text, and mixed chinese discussio
 
 把噪声较高的会议讨论材料转成可进入需求阶段的结构化产物。
 
+# 兼容原则
+
+1. 本 Skill 必须继续兼容原有单阶段、独立使用方式。
+2. team-aware 能力是轻量增强，不应破坏原有“直接输出需求梳理稿”的主路径。
+3. 若未检测到 team 协作上下文，沿用原有输出要求与结构。
+4. 不得因为 team-aware 规则而强制依赖 `AgentTeam/` 目录或 reviewer 前置。
+
+# Team-aware 轻量规则
+
+若处于 team 协作上下文，则增加以下轻量规则：
+1. 默认将本 Skill 视作 `product_analyst` 的阶段执行能力，而不是总控能力。
+2. 正式结论优先沉淀到共享工件，如：
+   - `context-package.md`
+   - `requirement-brief.md`
+   - `open-questions.md`
+3. 若共享工件路径已给定，应优先按共享工件更新，而不是只输出聊天文本。
+4. 若上游输入仍存在重大冲突、不明确结论或口径分裂，应显式回写“工作假设”或“待确认事项”，不要擅自替下游定案。
+5. 本 Skill 不应越界进入正式设计、OpenAPI 或前端原型阶段。
+
 # 输入类型
 
 - 录音转写文本
@@ -40,11 +59,17 @@ description: analyze meeting notes, transcript text, and mixed chinese discussio
 - 待确认问题列表
 - 需求简报初稿
 
+在 team 场景中，若已提供共享工件路径，建议同时将结果映射到：
+- `context-package.md`
+- `requirement-brief.md`
+- `open-questions.md`
+
 # 质量要求
 
 - 不要把讨论中的口头表达原样堆砌到结果里。
 - 对没有被会议明确确认的内容，统一标记为“工作假设”。
 - 当材料内容不完整时，要优先补齐结构，而不是强行补细节。
+- 若发现需求口径尚未稳定，不要替下游阶段私自锁定规则。
 
 # 高质量样例优先
 
@@ -59,3 +84,5 @@ description: analyze meeting notes, transcript text, and mixed chinese discussio
 - `templates/decision-log.md`
 - `templates/feature-extraction.md`
 - `templates/open-questions.md`
+- `../AgentTeam/shared/templates/context-package.md`
+- `../AgentTeam/shared/templates/decision-log.md`

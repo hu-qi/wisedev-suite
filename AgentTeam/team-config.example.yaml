@@ -1,0 +1,130 @@
+team:
+  team_name: wisedev_delivery_team
+  lifecycle: persistent
+  teammate_mode: build_mode
+  spawn_mode: inprocess
+
+  leader:
+    member_name: team_leader
+    display_name: WiseDev 交付团队负责人
+    persona: >
+      你是 WiseDev 长期协作产品交付团队的负责人。你负责目标澄清、任务拆解、
+      成员调度、依赖管理、阶段验收、风险控制和交接推进。
+      你必须维护共享工件的一致性，禁止团队成员在上游事实不稳定时擅自越级产出下游正式交付物。
+      你可以允许局部并行，但必须保证每个并行任务都基于明确输入、明确边界和明确负责人。
+      你不直接代写所有正式产物，你的职责是组织团队把产物稳定交付出来。
+
+  agents:
+    leader:
+      workspace:
+        stable_base: true
+      max_iterations: 160
+      completion_timeout: 1800.0
+      skills:
+        - using-wisedev
+        - wisedev-orchestrator
+
+    product_analyst:
+      workspace:
+        stable_base: true
+      max_iterations: 100
+      completion_timeout: 1200.0
+      skills:
+        - using-wisedev
+        - wisedev-meeting-to-spec
+        - wisedev-requirement-spec
+        - shared
+
+    solution_architect:
+      workspace:
+        stable_base: true
+      max_iterations: 100
+      completion_timeout: 1200.0
+      skills:
+        - wisedev-design-doc
+        - shared
+
+    api_designer:
+      workspace:
+        stable_base: true
+      max_iterations: 100
+      completion_timeout: 1200.0
+      skills:
+        - wisedev-openapi-contract
+        - shared
+
+    ux_designer:
+      workspace:
+        stable_base: true
+      max_iterations: 100
+      completion_timeout: 1200.0
+      skills:
+        - wisedev-prototype-design
+        - shared
+
+    frontend_engineer:
+      workspace:
+        stable_base: true
+      max_iterations: 140
+      completion_timeout: 1800.0
+      skills:
+        - wisedev-vue-mock-prototype
+        - wisedev-prototype-design
+        - shared
+
+    reviewer:
+      workspace:
+        stable_base: true
+      max_iterations: 80
+      completion_timeout: 900.0
+      skills:
+        - using-wisedev
+        - shared
+
+  predefined_members:
+    - member_name: product_analyst
+      display_name: 产品分析师
+      persona: >
+        你负责分析原始输入、整理上下文包、提炼业务目标、范围、约束、
+        假设、待确认事项，并输出正式需求规格。你不得越界输出详细技术设计、
+        OpenAPI 契约或前端实现。
+
+    - member_name: solution_architect
+      display_name: 方案架构师
+      persona: >
+        你负责将稳定需求转化为系统设计，输出模块边界、关键流程、状态模型、
+        数据对象和异常处理策略。你不得替代需求规格，也不得在需求不稳定时强行细化实现。
+
+    - member_name: api_designer
+      display_name: 接口契约设计师
+      persona: >
+        你负责基于已验收需求和设计输出稳定的 OpenAPI 契约、Mock 示例和接口检查清单。
+        你不得在核心业务规则不清时擅自补全业务语义。
+
+    - member_name: ux_designer
+      display_name: 体验设计师
+      persona: >
+        你负责原型方向、页面结构、信息架构、主题 token、交互规则和设计评审。
+        你不得直接改写业务目标或接口契约。
+
+    - member_name: frontend_engineer
+      display_name: 前端原型工程师
+      persona: >
+        你负责基于已验收契约和设计约束落地 Vue + Mock 原型，保持路由、页面模块、
+        mock 服务和主题规则一致。你不得擅自扩展需求边界。
+
+    - member_name: reviewer
+      display_name: 交付审查员
+      persona: >
+        你负责检查共享工件之间的一致性、完整性和可交付性，识别缺失、冲突、越界和模糊点。
+        你不直接重写主产物，而是输出问题、证据和整改建议。
+
+  workspace:
+    enabled: true
+    version_control: true
+
+  transport:
+    type: inprocess
+
+  storage:
+    type: sqlite

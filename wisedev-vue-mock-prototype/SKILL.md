@@ -11,6 +11,26 @@ description: generate vue-based frontend prototype plans and code scaffolds with
 
 输出一套可本地运行、可演示复杂流程、可与 OpenAPI 契约对齐的 Vue 原型方案与代码骨架。
 
+# 兼容原则
+
+1. 本 Skill 必须继续兼容原有单阶段、独立输出 Vue + Mock 原型的使用方式。
+2. team-aware 能力仅作为增强分支，不替换当前“直接输出原型方案与代码骨架”的主路径。
+3. 若未检测到 team 协作上下文，沿用原有技术栈、脚本和输出范围。
+4. 不得因为 team-aware 规则而强制依赖 leader、reviewer、共享工件或 `AgentTeam/` 目录。
+
+# Team-aware 轻量规则
+
+若处于 team 协作上下文，则增加以下轻量规则：
+1. 默认将本 Skill 视作 `frontend_engineer` 的阶段执行能力。
+2. 若已提供共享工件路径，应优先基于已验收的契约与设计约束输出，并尽量回写：
+   - `prototype/`
+   - `mock/`
+   - `prototype-readme.md`
+   - `stage-handoff.md`
+3. 若发现上游设计、契约或需求之间存在明显冲突，应先显式反馈问题，不要自行重定义业务范围。
+4. 本 Skill 不应替代 `wisedev-prototype-design` 做完整设计哲学收敛；若缺少 `DESIGN.md` / `theme.json`，应明确标注“跳过设计前置层”的假设。
+5. 在 team 场景中，优先保证下游演示原型可消费共享工件，而不是只追求聊天输出好看。
+
 # 默认技术栈
 
 - Vue 3
@@ -47,6 +67,7 @@ description: generate vue-based frontend prototype plans and code scaffolds with
 - 若存在多套设计方向，必须先明确当前选用的 theme id，再开始落代码。
 - 若上游提供 theme package，应通过 `src/theme/` 统一接入，避免把颜色、圆角、阴影散落在各页面中硬编码。
 - 若未提供 `DESIGN.md` / `theme.json`，必须明确写出当前是在“跳过设计前置层”的假设下生成原型。
+- 在 team 场景中，不要通过前端实现去偷偷修正需求或接口定义。
 
 # 脚本使用
 
@@ -85,3 +106,5 @@ description: generate vue-based frontend prototype plans and code scaffolds with
 - `templates/prototype-walkthrough.md`
 - `templates/page-inventory.md`
 - `templates/ui-module-map.md`
+- `../AgentTeam/shared/templates/decision-log.md`
+- `../AgentTeam/shared/templates/stage-handoff.md`

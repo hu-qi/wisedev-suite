@@ -11,6 +11,26 @@ description: generate openapi yaml contracts from requirement and design artifac
 
 生成可审阅、可 Mock、适合前端原型消费的单文件 `openapi.yaml`。
 
+# 兼容原则
+
+1. 本 Skill 必须继续兼容原有单阶段、独立输出 `openapi.yaml` 的使用方式。
+2. team-aware 能力仅作为增强分支，不替换当前“直接输出契约”的主路径。
+3. 若未检测到 team 协作上下文，沿用原有输出顺序与契约设计规则。
+4. 不得因为 team-aware 规则而强制依赖 leader、reviewer、共享工件或 `AgentTeam/` 目录。
+
+# Team-aware 轻量规则
+
+若处于 team 协作上下文，则增加以下轻量规则：
+1. 默认将本 Skill 视作 `api_designer` 的阶段执行能力。
+2. 若已提供共享工件路径，应优先基于已验收的需求与设计工件输出，并尽量回写：
+   - `openapi.yaml`
+   - `api-checklist.md`
+   - `decision-log.md`
+   - `stage-handoff.md`
+3. 若关键接口语义依赖未稳定业务规则，必须显式写入“假设与边界”，不要静默补全核心语义。
+4. 本 Skill 不应越界重写需求目标，也不应替代前端原型设计或实现。
+5. 在 team 场景中，应优先维护契约与需求 / 设计之间的追踪关系，方便下游原型和前端消费。
+
 # 基本原则
 
 - 契约先于实现。
@@ -39,6 +59,7 @@ description: generate openapi yaml contracts from requirement and design artifac
 - 查询参数、schema 字段、枚举名遵循统一命名风格。
 - 所有重要操作应声明成功响应与失败响应。
 - 缺失信息较多时，必须先输出固定标题“假设与边界”，列出缺失信息、默认假设与不覆盖范围，然后再输出完整 `openapi.yaml`。
+- 在 team 场景中，若发现上游需求或设计与接口边界明显冲突，应先显式指出，不要私自定案。
 
 # 脚本使用
 
@@ -62,6 +83,8 @@ description: generate openapi yaml contracts from requirement and design artifac
 - `templates/security-scheme-template.yaml`
 - `templates/operation-example-template.yaml`
 - `templates/api-design-checklist.md`
+- `../AgentTeam/shared/templates/decision-log.md`
+- `../AgentTeam/shared/templates/stage-handoff.md`
 
 ## 输出顺序
 

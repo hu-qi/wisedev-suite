@@ -13,6 +13,26 @@ description: recommend contrasting prototype design directions, generate theme t
 - 页面级布局约束与视觉说明
 - 对现有原型草稿的设计评审与快速修复建议
 
+# 兼容原则
+
+1. 本 Skill 必须继续兼容原有“设计前置层”能力。
+2. team-aware 能力是增强项，不替换原有设计方向输出主路径。
+3. 若未检测到 team 协作上下文，继续按原有方式输出方向、主题包与设计评审。
+4. 不得因为 team-aware 规则而强制依赖 team 共享工件或 reviewer 前置。
+
+# Team-aware 轻量规则
+
+若处于 team 协作上下文，则增加以下轻量规则：
+1. 默认将本 Skill 视作 `ux_designer` 的阶段执行能力。
+2. 若已提供共享工件路径，应优先对齐已验收需求、设计与契约，并尽量回写：
+   - `prototype-plan.md`
+   - `ux-rules.md`
+   - `theme-tokens.json`
+   - `stage-handoff.md`
+3. 若发现上游需求、设计或契约之间存在明显冲突，应先显式指出冲突，不要擅自扩展业务范围。
+4. 本 Skill 不直接替代 `wisedev-vue-mock-prototype` 输出完整工程代码。
+5. 本 Skill 应尽量把可执行设计约束表达清楚，方便下游前端角色消费，而不是只给抽象概念词。
+
 # 适用时机
 
 - 用户要求“推荐设计方向 / 视觉风格 / 配色方案 / 原型主题”
@@ -162,11 +182,17 @@ description: recommend contrasting prototype design directions, generate theme t
 - 页面级设计约束
 - 禁区与可替代方案
 
+在 team 场景中，建议同时形成可回写的共享工件摘要，例如：
+- `prototype-plan.md`
+- `ux-rules.md`
+- `stage-handoff.md`
+
 # 输出边界
 
 - 本 Skill 不直接替代 `wisedev-vue-mock-prototype` 写完整工程代码。
 - 本 Skill 不生成生产级视觉规范系统。
 - 不要为了“有设计感”牺牲业务信息密度与政企语境可接受性。
+- 在 team 场景中，不要擅自扩展需求范围或替代上游契约定案。
 
 # 可用资源
 
@@ -182,3 +208,5 @@ description: recommend contrasting prototype design directions, generate theme t
 - `assets/themes/enterprise-calm.json`
 - `assets/themes/data-command.json`
 - `assets/themes/modern-east.json`
+- `../AgentTeam/shared/templates/decision-log.md`
+- `../AgentTeam/shared/templates/stage-handoff.md`
