@@ -91,7 +91,7 @@ description: "orchestrate staged delivery artifact generation from short require
 - Team 场景下的派工、审查、验收或交接结果
 
 ## 步骤 3：判断当前阶段
-必须根据“当前输入成熟度 + 目标产物”判断唯一最合适的当前阶段，不要同时激活多个子 Skill。
+必须根据“当前输入成熟度 + 目标产物”判断最合适的当前阶段。在非 team 场景下严禁同时激活多个子 Skill；在 team 场景下，除非满足并行规则（见“Team 场景下的新增规则”），否则也应保持串行。
 
 ## 步骤 4：生成上下文包
 必须使用 `templates/context-package.md` 先整理：

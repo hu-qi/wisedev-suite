@@ -66,6 +66,7 @@
 - `context-package.md`
 - `requirement-brief.md`
 - `requirement-spec.md`
+- `acceptance-criteria.md`
 - `open-questions.md`
 
 ### 不能越界做的事

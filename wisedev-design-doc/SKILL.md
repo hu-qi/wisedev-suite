@@ -24,6 +24,9 @@ description: generate chinese high-level and detailed design documents from requ
 1. 默认将本 Skill 视作 `solution_architect` 的阶段执行能力。
 2. 若已提供共享工件路径，应优先基于已验收需求工件输出设计，并尽量回写：
    - `design-doc.md`
+   - `architecture-decisions.md`
+   - `data-models.md`
+   - `risk-log.md`
    - `decision-log.md`
    - `stage-handoff.md`
 3. 若需求仍存在关键不稳定点，应显式指出“待确认事项”或回推给 leader / reviewer，而不是私自修正业务目标。

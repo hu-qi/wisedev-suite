@@ -121,7 +121,7 @@ team:
 
   workspace:
     enabled: true
-    version_control: false
+    version_control: true
 
   transport:
     type: inprocess
